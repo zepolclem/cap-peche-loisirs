@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const response = await fetch(
+        "https://directus.cappecheloisirs.com/items/prestation?fields=title,period,duration,description,slug,price&filter[status]=published",
+    );
+    const prestations = await response.json();
+
+
+    const entries = prestations.data.map((prestation) => ({
+        params: { slug: prestation.slug },
+        props: { prestation },
+ 
+    }));
+    
+
+    console.log(entries);
+
+    return entries;
+}
+
+const { prestation } = Astro.props;
+---
+
+<Layout title={prestation.title}>
+    <main class="p-2">
+        <h1>{prestation.title}</h1>
+
+        <p class="text-gray-500 py-4">{prestation.description}</p>
+
+        <ul>
+            <li>{prestation.period}</li>
+            <li>{prestation.duration}</li>
+        </ul>
+
+        <span class="text-gray-500 py-4">{prestation.price} €</span>
+    </main>
+</Layout>

@@ -1,0 +1,16 @@
+meta {
+  name: get prestations
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://directus.cappecheloisirs.com/items/prestation?fields=title,period,duration,description&filter[status]=published
+  body: none
+  auth: none
+}
+
+query {
+  fields: title,period,duration,description
+  filter[status]: published
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Cap Pêche Loisirs",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
