@@ -1,9 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getDirectusItems } from "../utils/get-directus-client";
+
+const prestations = await getDirectusItems("prestation");
 ---
 
 <Layout title="Nos prestations">
     <main>
         <h1>Nos prestations</h1>
+
+        <br />
+
+        <ul>
+            {
+                prestations.map((prestation) => (
+                    <li>
+                        <a href={`/prestations/${prestation.slug}`}>
+                            {prestation.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </main>
 </Layout>

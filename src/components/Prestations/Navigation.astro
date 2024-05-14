@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+
+import { getDirectusItems } from "../../utils/get-directus-client";
+
+const { prestations } = Astro.props;
+const images = await getDirectusItems("prestation_files");
+
+---
+
+<nav
+    class="md:flex items-center justify-between p-3 lg:px-8"
+    aria-label="Global"
+>
+    {
+        prestations.map((prestation) => (
+            <a class="bg-white m-3" href={`/prestations/${prestation.slug}`}>
+                {prestation.title}
+            </a>
+        ))
+    }
+</nav>

@@ -5,12 +5,12 @@ meta {
 }
 
 get {
-  url: https://directus.cappecheloisirs.com/items/prestation?fields=title,period,duration,description&filter[status]=published
+  url: https://directus.cappecheloisirs.com/items/prestation?filter[status]=published&fields=title,period,duration,description,slug,price,picture
   body: none
   auth: none
 }
 
 query {
-  fields: title,period,duration,description
   filter[status]: published
+  fields: title,period,duration,description,slug,price,picture
 }

@@ -1,31 +1,39 @@
 ---
+import { Image } from "astro:assets";
+
+import Navigation from "../../components/Prestations/Navigation.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getDirectusItems } from "../../utils/get-directus-client";
 
 export async function getStaticPaths() {
-    const response = await fetch(
-        "https://directus.cappecheloisirs.com/items/prestation?fields=title,period,duration,description,slug,price&filter[status]=published",
-    );
-    const prestations = await response.json();
+    const prestations = await getDirectusItems("prestation");
 
+    // console.log(prestations);
 
-    const entries = prestations.data.map((prestation) => ({
+    const entries = prestations.map((prestation) => ({
         params: { slug: prestation.slug },
-        props: { prestation },
- 
+        props: { prestation, prestations },
     }));
-    
-
-    console.log(entries);
 
     return entries;
 }
 
-const { prestation } = Astro.props;
+const { prestation, prestations } = Astro.props;
 ---
 
 <Layout title={prestation.title}>
     <main class="p-2">
-        <h1>{prestation.title}</h1>
+        <Navigation prestations={prestations} />
+        <h1 class="text-3xl pb-2">{prestation.title}</h1>
+
+        <Image
+            src={import.meta.env.PUBLIC_DIRECTUS_BASE_URL +
+                "/assets/" +
+                prestation.picture}
+            alt={prestation.title}
+            width={400}
+            height={400}
+        />
 
         <p class="text-gray-500 py-4">{prestation.description}</p>
 
