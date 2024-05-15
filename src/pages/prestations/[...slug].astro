@@ -8,8 +8,6 @@ import { getDirectusItems } from "../../utils/get-directus-client";
 export async function getStaticPaths() {
     const prestations = await getDirectusItems("prestation");
 
-    // console.log(prestations);
-
     const entries = prestations.map((prestation) => ({
         params: { slug: prestation.slug },
         props: { prestation, prestations },
@@ -22,7 +20,7 @@ const { prestation, prestations } = Astro.props;
 ---
 
 <Layout title={prestation.title}>
-    <main class="p-2">
+    <main>
         <Navigation prestations={prestations} />
         <h1 class="text-3xl pb-2">{prestation.title}</h1>
 

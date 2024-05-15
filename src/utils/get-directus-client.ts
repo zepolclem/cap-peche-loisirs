@@ -8,7 +8,7 @@ export const getDirectusItems = async (item: string) => {
         readItems(item, {
             fields: ['*'],
         })
-    );    
+    );
 
     return result;
 }
@@ -18,7 +18,7 @@ export const getDirectusItem = async (item: string) => {
         readItems(item, {
             fields: ['*'],
         })
-    );    
+    );
 
     return result;
 }
