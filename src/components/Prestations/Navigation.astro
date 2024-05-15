@@ -2,7 +2,7 @@
 import { getDirectusItems } from "../../utils/get-directus-client";
 
 const { prestations } = Astro.props;
-const images = await getDirectusItems("prestation_files");
+// const images = await getDirectusItems("prestation_files");
 
 ---
 
@@ -11,6 +11,7 @@ const images = await getDirectusItems("prestation_files");
     aria-label="Global"
 >
     {
+        // @ts-ignore
         prestations.map((prestation) => (
             <a class="bg-white m-3" href={`/prestations/${prestation.slug}`}>
                 {prestation.title}
