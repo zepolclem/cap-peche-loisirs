@@ -13,6 +13,6 @@ export default defineConfig({
       protocol: "https"
     }]
   },
-  output: "server",
+  output: "static",
   adapter: vercel()
 });
