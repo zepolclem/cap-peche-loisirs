@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 
 import Navigation from "../../components/Prestations/Navigation.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getDirectusItems } from "../../utils/get-directus-client";
+import { getDirectusItems } from "./../../utils/get-directus-client";
 
 export async function getStaticPaths() {
     const prestations = await getDirectusItems("prestation");
