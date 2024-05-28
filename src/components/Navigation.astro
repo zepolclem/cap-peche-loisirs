@@ -11,28 +11,40 @@ const links = [
 ---
 
 <StickyHeader
-	class="sticky top-0 border-b z-20 transition-all lg:flex p-5 gap-5 text-white bg-gray-800/90"
+	class="sticky top-0 border-b z-20 transition-all lg:flex p-5"
 	scrollY={50}
-	defaultClass="py-5 border-transparent"
-	activeClass="py-2 bg-white/80 border-gray-200 backdrop-blur-lg"
+	defaultClass="py-5 bg-white border-transparent"
+	activeClass="py-2 bg-white backdrop-blur-lg"
 >
 	<Astronav closeOnClick>
-		<div class="flex w-full justify-between">
-			<a>Cap Pêche Loisirs</a>
-			<div class="block lg:hidden">
-				<MenuIcon class="w-4 h-4 text-white" />
+		<div class="lg:flex w-full max-w-screen-xl justify-between mx-auto">
+			<div class="flex justify-between pt-2">
+				<a
+					href="/"
+					class="text-2xl lg:text-3xl uppercase font-bold text-red-600"
+					>Cap Pêche Loisirs</a
+				>
+				<!-- <img src="./../../public/logo.png" alt="" width="70px" /> -->
+				<div class="block lg:hidden">
+					<MenuIcon class="w-4 h-4 text-gray-900" />
+				</div>
 			</div>
+			<MenuItems class="hidden lg:flex my-3">
+				<ul class="flex flex-col lg:flex-row lg:gap-5">
+					{
+						links.map((link) => (
+							<li>
+								<a
+									href={link.to}
+									class="font-medium text-gray-900 transition hover:opacity-80"
+								>
+									{link.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</MenuItems>
 		</div>
-		<MenuItems class="hidden lg:flex my-3">
-			<ul class="flex flex-col lg:flex-row lg:gap-5">
-				{
-					links.map((link) => (
-						<li>
-							<a href={link.to}>{link.label}</a>
-						</li>
-					))
-				}
-			</ul>
-		</MenuItems>
 	</Astronav>
 </StickyHeader>

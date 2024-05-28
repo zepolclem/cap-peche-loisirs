@@ -1,10 +1,11 @@
 ---
+import { Image } from "astro:assets";
+
 const { prestations } = Astro.props;
 // const images = await getDirectusItems("prestation_files");
-
 ---
 
-<nav
+<!-- <nav
     class="md:flex items-center justify-between p-3 lg:px-8"
     aria-label="Global"
 >
@@ -16,4 +17,54 @@ const { prestations } = Astro.props;
             </a>
         ))
     }
-</nav>
+</nav> -->
+<section>
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <header class="text-center">
+            <span class="flex items-center py-8">
+                <span class="h-px flex-1 bg-black"></span>
+                <h1 class="shrink-0 px-6 text-3xl font-bold">
+                    Nos prestations
+                </h1>
+                <span class="h-px flex-1 bg-black"></span>
+            </span>
+
+            <ul class="grid grid-cols-2 md:grid-cols-4">
+                {
+                    // @ts-ignore
+                    prestations.map((prestation) => (
+                        <ul>
+                            <li>
+                                <a
+                                    href={"/prestations/" + prestation.slug}
+                                    class="group relative block m-1"
+                                >
+                                    {prestation.picture && (
+                                        <Image
+                                            src={
+                                                import.meta.env
+                                                    .PUBLIC_DIRECTUS_BASE_URL +
+                                                "/assets/" +
+                                                prestation.picture
+                                            }
+                                            alt={prestation.title}
+                                            width={400}
+                                            height={400}
+                                            class="bg-center bg-cover w-full h-32 md:h-48 lg:h-64"
+                                        />
+                                    )}
+
+                                    <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+                                        <h3 class="mt-1.5 inline-block bg-black opacity-80 px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                                            {prestation.title}
+                                        </h3>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    ))
+                }
+            </ul>
+        </header>
+    </div>
+</section>

@@ -22,30 +22,117 @@ const { prestation, prestations } = Astro.props;
 <Layout title={prestation.title}>
     <main>
         <Navigation prestations={prestations} />
-        <h1 class="text-3xl pb-2">{prestation.title}</h1>
+        <section>
+            <div class="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="relative flex items-center bg-gray-100">
+                        <span
+                            class="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"
+                        ></span>
 
-        {
-            prestation.picture && (
-                <Image
-                    src={
-                        import.meta.env.PUBLIC_DIRECTUS_BASE_URL +
-                        "/assets/" +
-                        prestation.picture
-                    }
-                    alt={prestation.title}
-                    width={400}
-                    height={400}
-                />
-            )
-        }
+                        <div class="p-8 sm:p-16 lg:p-24">
+                            <h1 class="text-2xl font-bold sm:text-3xl">
+                                {prestation.title}
+                            </h1>
 
-        <p class="text-gray-500 py-4">{prestation.description}</p>
+                            <p class="my-4 text-gray-600">
+                                {prestation.description}
+                            </p>
 
-        <ul>
-            <li>{prestation.period}</li>
-            <li>{prestation.duration}</li>
-        </ul>
+                            <div class="flow-root pt-4">
+                                <dl
+                                    class="-my-3 divide-y divide-gray-100 text-sm"
+                                >
+                                    <div
+                                        class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4"
+                                    >
+                                        <dt class="font-medium text-gray-900">
+                                            Periode
+                                        </dt>
+                                        <dd class="text-gray-700 sm:col-span-2">
+                                            {prestation.period}
+                                        </dd>
+                                    </div>
 
-        <span class="text-gray-500 py-4">{prestation.price} €</span>
+                                    <div
+                                        class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4"
+                                    >
+                                        <dt class="font-medium text-gray-900">
+                                            Durée
+                                        </dt>
+                                        <dd class="text-gray-700 sm:col-span-2">
+                                            {prestation.duration}
+                                        </dd>
+                                    </div>
+
+                                    <div
+                                        class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4"
+                                    >
+                                        <dt class="font-medium text-gray-900">
+                                            Prix
+                                        </dt>
+                                        <dd class="text-gray-700 sm:col-span-2">
+                                            {prestation.price} € TTC
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+
+                            <!-- <a
+                                href="#"
+                                class="mt-8 inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                            >
+                                Get in Touch
+                            </a> -->
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 lg:py-16">
+                        <div class="relative h-64 sm:h-80 lg:h-full">
+                            {
+                                prestation.picture && (
+                                    <Image
+                                        src={
+                                            import.meta.env
+                                                .PUBLIC_DIRECTUS_BASE_URL +
+                                            "/assets/" +
+                                            prestation.picture
+                                        }
+                                        alt={prestation.title}
+                                        width={1000}
+                                        height={1000}
+                                        class="absolute inset-0 h-full w-full object-cover"
+                                    />
+                                )
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <article class="p-4 space-y-4 text-gray-500">
+                <p>
+                    Lors de nos sorties de guidage de pêche, nos moniteurs de
+                    pêches vous ferons découvrir les techniques, montages,
+                    leurres ou appâts en fonction du lieu, des conditions et des
+                    poissons recherchés. De l’initiation au perfectionnement, je
+                    m’adapterais en fonction de chaque personne.
+                </p>
+                <p>
+                    À bord de notre navire de transport de passagés, il sera
+                    également possible de vous faire découvrir en toute
+                    convivialité le milieu maritime, la côte d'argent et la côte
+                    basque lors de balades, sunset ou excursions pour observer
+                    les cétacés.
+                </p>
+                <p>
+                    Pour l’ensemble des prestations, ne pas oublier : lunettes
+                    de soleil, crème solaire, casquette, veste ou coupe vent et
+                    chaussures fermées. Le point de rendez-vous avant chaque
+                    prestation se situe à la cabane Cap Pêche Loisirsau port de
+                    Capbreton (avenue Georges Pompidou, entre le manège et la
+                    maison du port).
+                </p>
+            </article>
+        </section>
     </main>
 </Layout>
