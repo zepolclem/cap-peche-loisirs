@@ -7,31 +7,41 @@ const prestations = await getDirectusItems("prestation");
 ---
 
 <Layout title="Nos prestations">
-    <main>
-        <Navigation prestations={prestations} />
+    <>
+        <div
+            class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+        >
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold sm:text-4xl">
+                    Nos prestations
+                </h2>
+            </div>
 
-        <div>
-            <p class="py-2">
-                Lors de nos sorties de guidage de pêche, nos moniteurs de pêches
-                vous ferons découvrir les techniques, montages, leurres ou
-                appâts en fonction du lieu, des conditions et des poissons
-                recherchés. De l’initiation au perfectionnement, je m’adapterais
-                en fonction de chaque personne.
-            </p>
-            <p class="py-2">
-                À bord de notre navire de transport de passagés, il sera
-                également possible de vous faire découvrir en toute convivialité
-                le milieu maritime, la côte d'argent et la côte basque lors de
-                balades, sunset ou excursions pour observer les cétacés.
-            </p>
-            <p class="py-2">
-                Pour l’ensemble des prestations, ne pas oublier : lunettes de
-                soleil, crème solaire, casquette, veste ou coupe vent et
-                chaussures fermées. Le point de rendez-vous avant chaque
-                prestation se situe à la cabane Cap Pêche Loisirsau port de
-                Capbreton (avenue Georges Pompidou, entre le manège et la maison
-                du port).
-            </p>
+            <article class="mt-8">
+                <p class="py-2">
+                    Lors de nos sorties de guidage de pêche, nos moniteurs de
+                    pêches vous ferons découvrir les techniques, montages,
+                    leurres ou appâts en fonction du lieu, des conditions et des
+                    poissons recherchés. De l’initiation au perfectionnement, je
+                    m’adapterais en fonction de chaque personne.
+                </p>
+                <p class="py-2">
+                    À bord de notre navire de transport de passagés, il sera
+                    également possible de vous faire découvrir en toute
+                    convivialité le milieu maritime, la côte d'argent et la côte
+                    basque lors de balades, sunset ou excursions pour observer
+                    les cétacés.
+                </p>
+                <p class="py-2">
+                    Pour l’ensemble des prestations, ne pas oublier : lunettes
+                    de soleil, crème solaire, casquette, veste ou coupe vent et
+                    chaussures fermées. Le point de rendez-vous avant chaque
+                    prestation se situe à la cabane Cap Pêche Loisirsau port de
+                    Capbreton (avenue Georges Pompidou, entre le manège et la
+                    maison du port).
+                </p>
+            </article>
+            <Navigation prestations={prestations} />
         </div>
-    </main>
+    </>
 </Layout>
