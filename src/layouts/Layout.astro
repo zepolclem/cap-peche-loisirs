@@ -27,22 +27,20 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-white">
 		<Navigation />
-		<div class="mx-auto max-w-screen-xl">
+		<div class="mx-auto">
 			<slot />
 		</div>
 		<Footer />
-		
+		<style>
+			.hidden {
+				display: none;
+			}
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				margin: 0;
+			}
+		</style>
 	</body>
 </html>
-
-<style>
-	.hidden {
-		display: none;
-	}
-	html {
-		scroll-behavior: smooth;
-	}
-	body {
-		margin: 0;
-	}
-</style>

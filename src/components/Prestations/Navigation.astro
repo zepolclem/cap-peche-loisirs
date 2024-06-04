@@ -5,95 +5,41 @@ const { prestations } = Astro.props;
 // const images = await getDirectusItems("prestation_files");
 ---
 
+<nav>
+    <ul class="grid grid-cols-2 md:grid-cols-4">
+        {
+            // @ts-ignore
+            prestations.map((prestation) => (
+                <ul>
+                    <li>
+                        <a
+                            href={"/prestations/" + prestation.slug}
+                            class="group relative block m-1"
+                        >
+                            {prestation.picture && (
+                                <Image
+                                    src={
+                                        import.meta.env
+                                            .PUBLIC_DIRECTUS_BASE_URL +
+                                        "/assets/" +
+                                        prestation.picture
+                                    }
+                                    alt={prestation.title}
+                                    width={400}
+                                    height={400}
+                                    class="bg-center rounded bg-cover w-full h-32 md:h-48 lg:h-64"
+                                />
+                            )}
 
-<section>
-    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <section class="text-center">
-            <span class="flex items-center py-8">
-                <span class="h-px flex-1 bg-black"></span>
-                <h1 class="shrink-0 px-6 text-3xl font-bold">
-                    Nos prestations
-                </h1>
-                <span class="h-px flex-1 bg-black"></span>
-            </span>
-
-            <nav>
-                <ul class="grid grid-cols-2 md:grid-cols-4">
-                    {
-                        // @ts-ignore
-                        prestations.map((prestation) => (
-                            <ul>
-                                <li>
-                                    <a
-                                        href={"/prestations/" + prestation.slug}
-                                        class="group relative block m-1"
-                                    >
-                                        {prestation.picture && (
-                                            <Image
-                                                src={
-                                                    import.meta.env
-                                                        .PUBLIC_DIRECTUS_BASE_URL +
-                                                    "/assets/" +
-                                                    prestation.picture
-                                                }
-                                                alt={prestation.title}
-                                                width={400}
-                                                height={400}
-                                                class="bg-center bg-cover w-full h-32 md:h-48 lg:h-64"
-                                            />
-                                        )}
-
-                                        <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
-                                            <h3 class="mt-1.5 inline-block bg-black opacity-80 px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
-                                                {prestation.title}
-                                            </h3>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        ))
-                    }
+                            <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+                                <h3 class="mt-1.5 inline-block bg-black opacity-80 px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                                    {prestation.title}
+                                </h3>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
-            </nav>
-        </section>
-        <section>
-            <div>
-                <span class="flex items-center py-8 text-black">
-                    <span class="h-px flex-1 bg-black"></span>
-                    <h1 class="shrink-0 px-6 text-3xl font-bold">
-                        Informations
-                    </h1>
-                    <span class="h-px flex-1 bg-black"></span>
-                </span>
-            </div>
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                <div class="p-4 space-y-4 text-gray-600 m-8">
-                    <p>
-                        Pour l’ensemble des prestations, <b>ne pas oublier :</b>
-                    </p>
-                    <ul class="list-disc ml-16">
-                        <li>Chapeau ou casquette</li>
-                        <li>Veste ou coupe-vent</li>
-                        <li>Lunettes de soleil</li>
-                        <li>Crème solaire</li>
-                        <li>Chaussures fermées</li>
-                    </ul>
-                    <p>
-                        Le point de rendez-vous avant chaque prestation se situe
-                        à la cabane Cap Pêche Loisirsau port de Capbreton
-                        (avenue Georges Pompidou, entre le manège et la maison
-                        du port).
-                    </p>
-                </div>
-                <div>
-                    <iframe
-                        title="gmap"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11547.14429307745!2d-1.437637!3d43.652619!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3818cfd3ecc11e27!2sCap+P%C3%AAche+Loisirs!5e0!3m2!1sfr!2sfr!4v1561380452272!5m2!1sfr!2sfr"
-                        style={{ width: "100%", height: "20vh" }}
-                    >
-                    </iframe>
-                </div>
-            </div>
-        </section>
-    </div>
-</section>
+            ))
+        }
+    </ul>
+</nav>

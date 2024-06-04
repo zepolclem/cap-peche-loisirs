@@ -13,6 +13,7 @@ export async function getStaticPaths() {
         props: { prestation, prestations },
     }));
 
+    console.log(prestations);
     return entries;
 }
 
@@ -20,9 +21,9 @@ const { prestation, prestations } = Astro.props;
 ---
 
 <Layout title={prestation.title}>
-    <main>
+    <main class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <section>
-            <div class="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
+            <div class="">
                 <div class="grid grid-cols-1 lg:grid-cols-2">
                     <div class="relative flex items-center bg-gray-100">
                         <span
@@ -71,7 +72,31 @@ const { prestation, prestations } = Astro.props;
                                             Prix
                                         </dt>
                                         <dd class="text-gray-700 sm:col-span-2">
-                                            {prestation.price} € TTC
+                                            {prestation.price} € TTC (par personne)
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4"
+                                    >
+                                        <dt class="font-medium text-gray-900">
+                                            Espèces pêchées
+                                        </dt>
+                                        <dd class="text-gray-700 sm:col-span-2">
+                                            <ul>
+                                                {prestation.species}
+                                            </ul>
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4"
+                                    >
+                                        <dt class="font-medium text-gray-900">
+                                            Techniques de pêche
+                                        </dt>
+                                        <dd class="text-gray-700 sm:col-span-2">
+                                            <ul>
+                                                {prestation.technics}
+                                            </ul>
                                         </dd>
                                     </div>
                                 </dl>
@@ -109,6 +134,43 @@ const { prestation, prestations } = Astro.props;
                 </div>
             </div>
         </section>
-        <Navigation prestations={prestations} />
+        <section>
+            <!-- <div>
+                <span class="flex items-center py-8 text-black">
+                    <span class="h-px flex-1 bg-black"></span>
+                    <h1 class="shrink-0 px-6 text-3xl font-bold">
+                        Informations
+                    </h1>
+                    <span class="h-px flex-1 bg-black"></span>
+                </span>
+            </div> -->
+            <div class="p-4 space-y-4 text-gray-600 m-8">
+                <p>
+                    Pour l’ensemble des prestations, <b>ne pas oublier :</b>
+                </p>
+                <ul class="list-disc ml-16">
+                    <li>Chapeau ou casquette</li>
+                    <li>Veste ou coupe-vent</li>
+                    <li>Lunettes de soleil</li>
+                    <li>Crème solaire</li>
+                    <li>Chaussures fermées</li>
+                </ul>
+                <p>
+                    Le point de rendez-vous avant chaque prestation se situe à
+                    la cabane Cap Pêche Loisirsau port de Capbreton (avenue
+                    Georges Pompidou, entre le manège et la maison du port).
+                </p>
+            </div>
+        </section>
+        <section>
+            <!-- <span class="flex items-center py-8">
+                <span class="h-px flex-1 bg-black"></span>
+                <h1 class="shrink-0 px-6 text-3xl font-bold">
+                    Nos prestations
+                </h1>
+                <span class="h-px flex-1 bg-black"></span>
+            </span> -->
+            <Navigation prestations={prestations} />
+        </section>
     </main>
 </Layout>
